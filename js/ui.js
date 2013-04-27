@@ -30,7 +30,6 @@ Y.use('calendar', 'anim', 'autocomplete', function(Y) {
 
 });
 
-
 // Helpers
 
 function registerListener(calendar, calendarDivID) {
