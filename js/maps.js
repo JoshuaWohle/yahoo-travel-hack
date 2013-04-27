@@ -1,9 +1,12 @@
 var geocoder;
 var map;
 var locations;
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
 
 function initializeMap() {
 	geocoder = new google.maps.Geocoder();
+	directionsDisplay = new google.maps.DirectionsRenderer();
 	var mapOptions = {
 		zoom : 8,
 		center : new google.maps.LatLng(51.5171, 0.1062),
@@ -11,8 +14,7 @@ function initializeMap() {
 	}
 	map = new google.maps.Map(document.getElementById("map_container"),
 			mapOptions);
-	setLocations();
-	drawLocations();
+	directionsDisplay.setMap(map);
 };
 
 function codeAddress() {
@@ -23,9 +25,9 @@ function codeAddress() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
 			getPlacesOfInterest(results[0].geometry.location.lat(),
-					results[0].geometry.location.lng(),
-		    		Y.one('#calendarFromTxt').get('value'),
-		    		Y.one('#calendarToTxt').get('value'));
+					results[0].geometry.location.lng(), Y.one(
+							'#calendarFromTxt').get('value'), Y.one(
+							'#calendarToTxt').get('value'));
 		} else {
 			alert("Geocode was not successful for the following reason: "
 					+ status);
@@ -33,33 +35,65 @@ function codeAddress() {
 	});
 };
 
-function setLocations() {
-	  locations = [['Bondi Beach', -33.890542, 151.274856, 4],
-      ['Coogee Beach', -33.923036, 151.259052, 5],
-      ['Cronulla Beach', -34.028249, 151.157507, 3],
-      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-      ['Maroubra Beach', -33.950198, 151.259302, 1]];
-};
-
 function drawLocations() {
+	var infoWindow = new google.maps.InfoWindow({
+		content : "holding"
+	});
 
-	var infowindow = new google.maps.InfoWindow();
+	for ( var i = 0; i < locations.length; i++) {
+		var marker = new google.maps.Marker({
+			position : new google.maps.LatLng(locations[i].lat,
+					locations[i].long),
+			map : map,
+			title : locations[i].name,
+			html : locations[i].name + "<br/>" + "Rating: "
+					+ locations[i].rating
+		});
 
-    var marker, i;
+		if(i == 0) {
+			infoWindow = new google.maps.InfoWindow({
+				content : "holding"
+			});
+			infoWindow.setContent("Start: " + marker.html);
+			infoWindow.open(map, marker);
+		} else if(i == locations.length-1) {
+			infoWindow = new google.maps.InfoWindow({
+				content : "holding"
+			});
+			infoWindow.setContent("End: " + marker.html);
+			infoWindow.open(map, marker);
+		}
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.setContent(this.html);
+			infoWindow.open(map, this);
+		});
+	}
+	drawRoute();
+}
 
-	for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2])
-        });
+function drawRoute() {
 
-        marker.setMap(map);
+	var start = new google.maps.LatLng(locations[0].lat, locations[0].long);
+	var end = new google.maps.LatLng(locations[locations.length-1].lat, locations[locations.length-1].long);
+	var waypts = [];
+	for (var i = 1; i < locations.length-1; i++) {
+		waypts.push(
+				{
+					location: new google.maps.LatLng(locations[i].lat, locations[i].long),
+					stopover: true
+				});
+	}
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-          return function() {
-            infowindow.setContent(locations[i][0]);
-            infowindow.open(map, marker);
-          }
-        })(marker, i));
-      }
-
+	var request = {
+			origin : start,
+			destination : end,
+			waypoints: waypts,
+			optimizeWaypoints: true,
+			travelMode : google.maps.TravelMode.WALKING
+		};
+		directionsService.route(request, function(result, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(result);
+			}
+		});
 }

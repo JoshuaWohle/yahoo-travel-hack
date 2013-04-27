@@ -6,14 +6,7 @@ function getPlacesOfInterest(lat, long, startDate, endDate) {
 	var startDate = new Date(startDate);
 	var endDate = new Date(endDate);
 
-	var jsonData = '{"lat": ' + lat + ', "long": ' + long + ', "start_date": ' + startDate.getTime() + ', "end_date": ' + endDate.getTime() + '}';
-
-	var url = uri + "/" + lat + "/" + long + "/" + startDate.getTime() + "/" + endDate.getTime();
-	console.log(uri);
-	/*$.getJSON(url,
-			  function (r) {
-				populateLocations(data);
-			});*/
+	var jsonData = '{"lat": ' + lat + ', "long": ' + long + ', "start_date": ' + startDate.getTime()/1000 + ', "end_date": ' + endDate.getTime()/1000 + '}';
 
 	$.ajax({
 		  type: "POST",
@@ -24,5 +17,7 @@ function getPlacesOfInterest(lat, long, startDate, endDate) {
 }
 
 function populateLocations(data) {
-	console.log("populating locations. ID: " + data);
+	locations = jQuery.parseJSON(data);
+	console.log(data);
+	drawLocations();
 }
