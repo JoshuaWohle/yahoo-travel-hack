@@ -5,7 +5,8 @@ body {
 }
 
 #container {
-	width: 		960px;
+	width: 		100%;
+	height: 	100%;
 	margin: 	auto;
 }
 
@@ -15,12 +16,32 @@ body {
 }
 
 #search_container {
+	position: 	relative;
+	top: 		45%;
 	width: 		100%;
-	text-align: 	center;
+	text-align: center;
 }
 
 #map_container {
 	width: 		100%;
 	height: 	600px;
 	border: 	1px solid #000000;
+}
+
+.float_left {
+	position: 	relative;
+	float: 		left;
+}
+
+/*** ELEMENT STYLING ***/
+
+.search_input {
+	height: 	30px;
+}
+
+/*** TEXT STYLING ***/
+
+.title {
+	font-size: 	30px;
+	font-style: bold;
 }
