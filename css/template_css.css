@@ -17,9 +17,9 @@ body {
 
 #search_container {
 	position: 	relative;
-	top: 		45%;
-	width: 		100%;
+	top: 		20%;
 	text-align: center;
+	margin: 	auto;
 }
 
 #map_container {
@@ -28,15 +28,20 @@ body {
 	border: 	1px solid #000000;
 }
 
-.float_left {
-	position: 	relative;
-	float: 		left;
+.calendar_select {
+	display: 	inline-block;
+	width: 		300px;
 }
 
 /*** ELEMENT STYLING ***/
 
 .search_input {
 	height: 	30px;
+}
+
+.calendar_style {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 /*** TEXT STYLING ***/

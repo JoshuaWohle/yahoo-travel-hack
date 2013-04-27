@@ -12,24 +12,21 @@ Y.use('calendar', function(Y) {
 	// and next month to be visible and setting the initial
 	// date to be November, 1982.
 	var calendar = new Y.Calendar({
-		contentBox : "#calendar",
-		height : '400px',
-		width : '400px',
+		contentBox : "#calendarFrom",
+		height : '300px',
+		width : '300px',
 		showPrevMonth : true,
 		showNextMonth : true,
 		date : new Date()
 	}).render();
 
 	var calendar2 = new Y.Calendar({
-		contentBox : "#calendar",
-		height : '400px',
-		width : '400px',
+		contentBox : "#calendarTo",
+		height : '300px',
+		width : '300px',
 		showPrevMonth : true,
 		showNextMonth : true,
 		date : new Date()
 	}).render();
-
-	calendar.hide();
-	calendar2.hide();
 
 });
