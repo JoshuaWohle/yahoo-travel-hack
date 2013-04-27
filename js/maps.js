@@ -25,7 +25,7 @@ function codeAddress() {
 			getPlacesOfInterest(results[0].geometry.location.lat(),
 					results[0].geometry.location.lng(),
 		    		Y.one('#calendarFromTxt').get('value'),
-		    		Y.one('#calendarFromTxt').get('value'));
+		    		Y.one('#calendarToTxt').get('value'));
 		} else {
 			alert("Geocode was not successful for the following reason: "
 					+ status);
