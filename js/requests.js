@@ -6,12 +6,21 @@ function getPlacesOfInterest(lat, long, startDate, endDate) {
 	var startDate = new Date(startDate);
 	var endDate = new Date(endDate);
 
+	var jsonData = '{"lat": ' + lat + ', "long": ' + long + ', "start_date": ' + startDate.getTime() + ', "end_date": ' + endDate.getTime() + '}';
+
 	var url = uri + "/" + lat + "/" + long + "/" + startDate.getTime() + "/" + endDate.getTime();
-	console.log(url);
-	$.getJSON(url,
+	console.log(uri);
+	/*$.getJSON(url,
 			  function (r) {
 				populateLocations(data);
-			});
+			});*/
+
+	$.ajax({
+		  type: "POST",
+		  url: uri,
+		  data: jsonData,
+		  success: populateLocations
+		});
 }
 
 function populateLocations(data) {
