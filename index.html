@@ -11,29 +11,26 @@
 
 <script src="js/ui.js"></script>
 <script src="js/maps.js"></script>
+<script src="js/anim.js"></script>
 </head>
-<body class="yui3-skin-sam" onload="initialize()">
-	<div id="container">
-
-		<div id="search_container">
-			<div class="title">YTravel Hack</div>
-			<form id="location_search">
-				<input type="text"
-					placeholder="Please enter the city you would like to visit"
-					size="50" class="search_input" /><br /> <br />
-				<div class="calendar_select">
-					From: <input type="text">
-					<div id="calendarFrom" class="calendar_style"></div>
-				</div>
-				<div class="calendar_select">
-					To: <input type="text">
-					<div id="calendarTo" class="calendar_style"></div>
-				</div><br/><br/>
-				<input type="submit" value="Find Itinerary!"/>
-			</form>
-		</div>
-		<!-- <div id="map_container"></div> -->
-
+<body class="yui3-skin-sam">
+	<div id="search_container">
+		<div class="title">YTravel Hack</div>
+		<form id="location_search">
+			<input type="text"
+				placeholder="Please enter the city you would like to visit"
+				size="50" class="search_input" id="search_location"/><br /> <br />
+			<div class="calendar_select">
+				From: <input type="text" id="calendarFromTxt">
+				<div id="calendarFrom" class="calendar_style"></div>
+			</div>
+			<div class="calendar_select">
+				To: <input type="text" id="calendarToTxt">
+				<div id="calendarTo" class="calendar_style"></div>
+			</div>
+			<br /> <br /> <input type="submit" value="Find Itinerary!" id="search_submit"/>
+		</form>
 	</div>
+	<div id="map_container"></div>
 </body>
 </html>
