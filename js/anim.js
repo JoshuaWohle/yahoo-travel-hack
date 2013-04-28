@@ -2,13 +2,15 @@ Y.use('anim', function(Y) {
 
 	var fadeOut = new Y.Anim({
 	    node: '#search_container',
-	    to: { opacity: 0}
+	    to: { opacity: 0 },
+	    duration: 2
 	});
 
 	var fadeIn = new Y.Anim({
-	    node: '#map_container',
+	    node: '#map_screen_wrapper',
 	    to: { opacity: 100,
-	    	  zIndex: 99 }
+	    	  zIndex: 99 },
+	    duration: 2
 	});
 
 	var switchViews = function(e) {

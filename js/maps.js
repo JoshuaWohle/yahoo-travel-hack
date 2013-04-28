@@ -46,20 +46,16 @@ function drawLocations() {
 					locations[i].long),
 			map : map,
 			title : locations[i].name,
-			html : locations[i].name + "<br/>" + "Rating: "
+			html : "<img src='data:image/jpeg;base64, " + + locations[i].photo + "'/>" + locations[i].name + "<br/>" + "Rating: "
 					+ locations[i].rating
 		});
 
 		if(i == 0) {
-			infoWindow = new google.maps.InfoWindow({
-				content : "holding"
-			});
+			infoWindow = new google.maps.InfoWindow();
 			infoWindow.setContent("Start: " + marker.html);
 			infoWindow.open(map, marker);
 		} else if(i == locations.length-1) {
-			infoWindow = new google.maps.InfoWindow({
-				content : "holding"
-			});
+			infoWindow = new google.maps.InfoWindow();
 			infoWindow.setContent("End: " + marker.html);
 			infoWindow.open(map, marker);
 		}
@@ -94,6 +90,15 @@ function drawRoute() {
 		directionsService.route(request, function(result, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay.setDirections(result);
+				drawRouteInstructions(result.routes[0].legs[0]);
 			}
 		});
+}
+
+function drawRouteInstructions(myRoute) {
+	var html = "<h2>Itinerary:<h2/>";
+	for (var i = 0; i < myRoute.steps.length; i++) {
+		html = html + myRoute.steps[i].instructions + "<br/>";
+	}
+	Y.one('#itinerary_container').setHTML(html);
 }

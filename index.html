@@ -3,6 +3,8 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="http://yui.yahooapis.com/3.10.0/build/cssnormalize/cssnormalize-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.0/build/cssgrids/cssgrids-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.10.0/build/cssgrids-responsive/cssgrids-responsive-min.css">
 <link rel="stylesheet" type="text/css" href="css/template_css.css">
 
 <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
@@ -33,6 +35,9 @@
 			<br /> <br /> <input type="submit" value="Find Itinerary!" id="search_submit"/>
 		</form>
 	</div>
-	<div id="map_container"></div>
+	<div id="map_screen_wrapper" class="yui3-g-r">
+		<div id="map_container" class="yui3-u-4-5"></div>
+		<div id="itinerary_container" class="yui3-u-1-5"></div>
+	</div>
 </body>
 </html>

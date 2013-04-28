@@ -16,7 +16,7 @@ body {
 	margin: 	auto;
 }
 
-#map_container {
+#map_screen_wrapper {
 	position: 	absolute;
 	top: 		0px;
 	width: 		100%;
@@ -24,6 +24,14 @@ body {
 	opacity: 	0;
 	border: 	1px solid #000000;
 	z-index: 	-1;
+}
+
+#map_container {
+	height: 	100%;
+}
+
+#itinerary_container {
+	height: 	100%;
 }
 
 .calendar_select {
