@@ -48,6 +48,7 @@ function drawLocations() {
 	else
 		endindex = locations.length;
 
+	changeItineraryPhoto(startindex);
 	for ( var i = startindex; i < endindex; i++) {
 		var marker = new google.maps.Marker({
 			position : new google.maps.LatLng(locations[i].lat,
@@ -57,7 +58,6 @@ function drawLocations() {
 			html : "<img src='" + locations[i].icon
 					+ "' class='location_icon'/>" + locations[i].name
 					+ "<br/>" + "Rating: " + locations[i].rating //+ "<img src='" + locations[i].photo + "' class='location_photo'>"
-		// locations[i].photo + "'/>"
 		});
 		markersArray[markersArray.length] = marker;
 
@@ -138,7 +138,7 @@ function drawRouteInstructions(myRoute) {
 		endindex = locations.length;
 
 	for ( var i = startindex; i < endindex; i++) {
-		html = html + "<li>" + locations[i].name + "</li>";
+		html = html + "<li><a href='#' onClick='changeItineraryPhoto("+ i +")'>" + locations[i].name + "</a></li>";
 	}
 
 	html = html + "</ol><h2>Itinerary:</h2><ul>";

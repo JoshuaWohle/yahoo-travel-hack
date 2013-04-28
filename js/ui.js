@@ -1,7 +1,7 @@
 // Some global variables
 var Y = YUI({ fetchCSS: 'force' });
 
-Y.use('calendar', 'anim', 'autocomplete', 'button', function(Y) {
+Y.use('calendar', 'anim', 'autocomplete', 'button', 'tabview', function(Y) {
 
 	Y.on('domready', function() {
 		var calendar = new Y.Calendar({
@@ -53,4 +53,8 @@ function registerListener(calendar, calendarDivID) {
 	      // element.
 	      Y.one(calendarDivID).set('value', dtdate.format(newDate));
 	    });
+}
+
+function changeItineraryPhoto(i) {
+	Y.one('#itinerary_photo').setHTML('<img src="' + locations[i].photo + '" class="location_photo"/>');
 }

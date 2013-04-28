@@ -21,4 +21,6 @@ function populateLocations(data) {
 	locations = jQuery.parseJSON(data);
 	console.log(data);
 	drawLocations();
+	fadeLoadOut.run();
+    fadeIn.run();
 }

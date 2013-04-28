@@ -1,3 +1,5 @@
+var fadeIn;
+var fadeLoadOut;
 Y.use('anim', function(Y) {
 
 	var fadeOut = new Y.Anim({
@@ -6,7 +8,21 @@ Y.use('anim', function(Y) {
 	    duration: 2
 	});
 
-	var fadeIn = new Y.Anim({
+	var fadeLoadIn = new Y.Anim({
+	    node: '#loading_screen',
+	    to: { opacity: 100,
+	    	  zIndex: 99},
+	    duration: 2
+	});
+
+	fadeLoadOut = new Y.Anim({
+	    node: '#loading_screen',
+	    to: { opacity: 0,
+	    	  zIndex: -1 },
+	    duration: 2
+	});
+
+	fadeIn = new Y.Anim({
 	    node: '#map_screen_wrapper',
 	    to: { opacity: 100,
 	    	  zIndex: 99 },
@@ -21,8 +37,8 @@ Y.use('anim', function(Y) {
 
 	    e.preventDefault();
 	    fadeOut.run();
+	    fadeLoadIn.run();
 	    initializeMap();
-	    fadeIn.run();
 	    codeAddress();
 	};
 
