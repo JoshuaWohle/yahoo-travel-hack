@@ -26,7 +26,9 @@ Y.use('anim', function(Y) {
 	    codeAddress();
 	};
 
-	Y.one('#search_submit').on('click', switchViews);
+	Y.on('domready', function() {
+		Y.one('#search_submit').on('click', switchViews);
+	});
 });
 
 function checkData() {

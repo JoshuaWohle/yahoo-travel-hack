@@ -1,32 +1,37 @@
 // Some global variables
-var Y = YUI();
+var Y = YUI({ fetchCSS: 'force' });
 
-Y.use('calendar', 'anim', 'autocomplete', function(Y) {
-	// Create a new instance of Calendar, setting its width
-	// and height, allowing the dates from the previous
-	// and next month to be visible and setting the initial
-	// date to be November, 1982.
-	var calendar = new Y.Calendar({
-		contentBox : "#calendarFrom",
-		height : '300px',
-		width : '300px',
-		showPrevMonth : true,
-		showNextMonth : true,
-		date : new Date()
-	}).render();
+Y.use('calendar', 'anim', 'autocomplete', 'button', function(Y) {
+
+	Y.on('domready', function() {
+		var calendar = new Y.Calendar({
+			contentBox : "#calendarFrom",
+			height : '250px',
+			width : '300px',
+			showPrevMonth : true,
+			showNextMonth : true,
+			date : new Date()
+		}).render();
 
 
-	var calendar2 = new Y.Calendar({
-		contentBox : "#calendarTo",
-		height : '300px',
-		width : '300px',
-		showPrevMonth : true,
-		showNextMonth : true,
-		date : new Date()
-	}).render();
+		var calendar2 = new Y.Calendar({
+			contentBox : "#calendarTo",
+			height : '250px',
+			width : '300px',
+			showPrevMonth : true,
+			showNextMonth : true,
+			date : new Date()
+		}).render();
 
-	registerListener(calendar2, "#calendarToTxt");
-	registerListener(calendar, "#calendarFromTxt");
+		registerListener(calendar2, "#calendarToTxt");
+		registerListener(calendar, "#calendarFromTxt");
+
+		// A push button widget
+	    var button = new Y.Button({
+	        srcNode: '#search_submit'
+	    });
+	});
+
 
 });
 

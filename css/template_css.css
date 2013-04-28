@@ -30,6 +30,11 @@ body {
 	height: 	100%;
 }
 
+#itinerary_text {
+	padding: 	10px;
+	width: 		100%;
+}
+
 .calendar_select {
 	display: 	inline-block;
 	width: 		300px;
@@ -46,9 +51,34 @@ body {
 	margin-bottom: 10px;
 }
 
+.location_icon {
+	float: 		left;
+	margin: 	5px;
+}
+
+.location_photo {
+	float: 		right;
+	margin: 	5px;
+}
+
+.location_photo img {
+	width: 		100px;
+}
+
+#map_container img { max-width: none; }
+
 /*** TEXT STYLING ***/
 
 .title {
 	font-size: 	30px;
 	font-style: bold
+}
+
+h1 {
+	display: 	inline;
+	text-align: center;
+}
+
+h1 a {
+	text-decoration:none;
 }
