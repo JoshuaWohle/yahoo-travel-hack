@@ -67,6 +67,18 @@ body {
 	z-index: 	-1;
 }
 
+#expedia_overlay {
+	position: 	absolute;
+	top: 		100%;
+	left: 		5px;
+	margin-top: -250px;
+	width: 		279px;
+	height: 	243px;
+	background-image: url('../images/expedia_old_logo.png');
+	background-repeat: no-repeat;
+	background-color: transparent;
+}
+
 /*** ELEMENT STYLING ***/
 
 .search_input {

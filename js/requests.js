@@ -13,7 +13,7 @@ function getPlacesOfInterest(lat, long, city, startDate, endDate) {
 		  type: "POST",
 		  url: uri,
 		  data: jsonData,
-		  timeout: 60000,
+		  timeout: 120000,
 		  success: populateLocations
 		});
 }
